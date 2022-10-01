@@ -5,6 +5,8 @@ import background from "./assets/cloudsbackground.jpg";
 export function LoginPage(props) {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
+    //sign up state here
+    const [ signup , toggleSignUp] = useState(false);
 
     //deconstruct the props
     const { loginHandler } = props;
@@ -47,23 +49,61 @@ export function LoginPage(props) {
         } 
     }
 
+    //seperate the login and sign up modules
 
-    return (
-        //login div
-        <div className="main">
-            <div className="LoginDiv">
-                <h2>Login</h2>
+    if (!signup) {
+        return (
+            <div className="main">
+                <h1>Cow Clicker EXTREME 3.0 (v4.2)</h1>
+                <h3>A Definitely Complete Video Game Experience</h3>
+                <div className="LoginDiv">
+                <h2 id="loginHeader">MOOGIN</h2>
                 <div className="LoginForm">
-                    <label>Username: </label>
-                    <input type="text" className="username" value={username} onChange={(e) => {setUsername(e.target.value)}} required/>
-                    <label>Password: </label>
-                    <input type="password" className="password" value={password} onChange={(e) => {setPassword(e.target.value)}} onKeyUpCapture={handlePress} required/>
+                    {/* <label>Username: </label> */}
+                    <input type="text" placeholder="Username" className="username" value={username} onChange={(e) => {setUsername(e.target.value)}} required/>
+                    {/* <label>Password: </label> */}
+                    <input type="password" placeholder="Password" className="password" value={password} onChange={(e) => {setPassword(e.target.value)}} onKeyUpCapture={handlePress} required/>
                 </div>
                 <div className="loginSubmitContainer">
-                <input type="submit" onClick={handleClick} className="loginButton"/>
+                    <input type="submit" onClick={handleClick} className="loginButton"/>
+                </div>
+                <div className="signupToggle">
+                    <p>Don't have an account?</p>
+                    <button onClick={() => {toggleSignUp(true)}}>Sign Up</button>
                 </div>
             </div>
         </div>
     )
+    } else {
+        return (
+            <div className="main">
+                <h1>Cow Clicker EXTREME 3.0 (v4.2)</h1>
+                <h3>A Definitely Complete Video Game Experience</h3>
+                <div className="LoginDiv">
+                    <h2 id="loginHeader">Sign Up!</h2>
+                    <div className="LoginForm">
+                        <label>Username: </label>
+                        <input type="text" placeholder="Username" className="username" value={username} onChange={(e) => {setUsername(e.target.value)}} required/>
+                        <label>Password: </label>
+                        <input type="password" placeholder="Password" className="password" value={password} onChange={(e) => {setPassword(e.target.value)}} onKeyUpCapture={handlePress} required/>
+                    </div>
+                    <div className="loginSubmitContainer">
+                    <input type="submit" onClick={handleClick} className="loginButton"/>
+                    <p>Already have an account?</p>
+                    <button onClick={() => {toggleSignUp(false)}}>Return to Login</button>
+                    </div>
+                </div>
+            </div>
+        )
+    }
+
+
+    // //we want conditional rendering here
+    // return (
+    //     //login div
+    //     <div className="main">
+    //         { signup ? <SignUpModule /> : <LoginModule />}
+    //     </div>
+    // )
 
 }
