@@ -12,3 +12,8 @@ export const clickCowActionCreator = () => ({
 export const calculateActionCreator = () => ({
 	type: types.CALCULATE,
 });
+
+export const userActionCreator = (userObj) => ({
+	type: types.USER,
+	payload: {username: userObj.username, password: userObj.password}
+});
