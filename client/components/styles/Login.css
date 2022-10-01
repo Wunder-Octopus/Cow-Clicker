@@ -1,0 +1,30 @@
+
+#root {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: auto;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    width: 500px;
+    align-items: center;
+    justify-content: center;
+}
+
+.LoginDiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.loginform {
+    display: flex;
+    width: 250px;
+    flex-direction: column;
+    align-items: center;
+}
