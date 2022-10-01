@@ -1,8 +1,15 @@
 body {
     /* background-color: green; */
+    height: 91vh;
+    overflow-y: hidden;
     background-image: url('https://i.imgur.com/TUKWVFl.jpg');
+    background-position:center top;
     background-size: cover;
+    background-attachment:fixed;
+    margin: 0px;
+    z-index: 0;
 }
+
 
 
 

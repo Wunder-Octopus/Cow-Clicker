@@ -1,7 +1,7 @@
 import * as types from '../constants/actionTypes';
 
 //change puchase to whatever
-export const AddCowActionCreator = () => ({
+export const addCowActionCreator = () => ({
 	type: types.ADD_COW,
 });
 
@@ -13,7 +13,11 @@ export const calculateActionCreator = () => ({
 	type: types.CALCULATE,
 });
 
-export const userActionCreator = (userObj) => ({
+export const userActionCreator = (username) => ({
 	type: types.USER,
-	payload: {username: userObj.username, password: userObj.password}
+	payload: username,
+});
+
+export const loggedInActionCreator = () => ({
+	type: types.LOGGED_IN,
 });
