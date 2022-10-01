@@ -1,10 +1,10 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const MONGO_URI = "";
+const MONGO_URI = "mongodb+srv://user1:user1@wunder-octopus.50q7fz8.mongodb.net/?retryWrites=true&w=majority";
 
 mongoose.connect(MONGO_URI, {
-	dbName: 'REPLACE THIS WITH REAL NAME',
+	dbName: 'Wunder-Octopus',
 })
 	.then(() => console.log('Connected to Mongo DB.'))
   .catch(err => console.log(err));
