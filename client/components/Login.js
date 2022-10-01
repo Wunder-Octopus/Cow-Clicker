@@ -57,7 +57,7 @@ export function LoginPage(props) {
                 <h1>Cow Clicker EXTREME 3.0 (v4.2)</h1>
                 <h3>A Definitely Complete Video Game Experience</h3>
                 <div className="LoginDiv">
-                <h2 id="loginHeader">MOOGIN</h2>
+                <h2 id="loginHeader">Moogin</h2>
                 <div className="LoginForm">
                     {/* <label>Username: </label> */}
                     <input type="text" placeholder="Username" className="username" value={username} onChange={(e) => {setUsername(e.target.value)}} required/>
@@ -69,7 +69,7 @@ export function LoginPage(props) {
                 </div>
                 <div className="signupToggle">
                     <p>Don't have an account?</p>
-                    <button onClick={() => {toggleSignUp(true)}}>Sign Up</button>
+                    <button className="signupButton" onClick={() => {toggleSignUp(true)}}>Sign Up</button>
                 </div>
             </div>
         </div>
@@ -80,17 +80,17 @@ export function LoginPage(props) {
                 <h1>Cow Clicker EXTREME 3.0 (v4.2)</h1>
                 <h3>A Definitely Complete Video Game Experience</h3>
                 <div className="LoginDiv">
-                    <h2 id="loginHeader">Sign Up!</h2>
+                    <h2 id="loginHeader">Moo Up!</h2>
                     <div className="LoginForm">
-                        <label>Username: </label>
+                        {/* <label>Username: </label> */}
                         <input type="text" placeholder="Username" className="username" value={username} onChange={(e) => {setUsername(e.target.value)}} required/>
-                        <label>Password: </label>
+                        {/* <label>Password: </label> */}
                         <input type="password" placeholder="Password" className="password" value={password} onChange={(e) => {setPassword(e.target.value)}} onKeyUpCapture={handlePress} required/>
                     </div>
                     <div className="loginSubmitContainer">
                     <input type="submit" onClick={handleClick} className="loginButton"/>
                     <p>Already have an account?</p>
-                    <button onClick={() => {toggleSignUp(false)}}>Return to Login</button>
+                    <button className="returnButton" onClick={() => {toggleSignUp(false)}}>Return to Login</button>
                     </div>
                 </div>
             </div>
