@@ -1,9 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {LoginPage} from './Login'
 import { Game } from './Game';
-import background from "./assets/cloudsbackground.jpg";
 
-//style={{ backgroundImage: `url(${background})` }}
 
 //main div, highest component
 //login screen
@@ -28,7 +26,7 @@ function App(props) {
 		<>
 		{LoggedIn ? <Game /> : <LoginPage loginHandler={loginHandler} />}
 		</>
-	)
-}
+	);
+};
 
 export default App;
