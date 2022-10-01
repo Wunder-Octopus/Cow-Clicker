@@ -40,6 +40,19 @@ body {
     transition: all .3s ease-in-out;
 }
 
+.LoginDiv button, input {
+    cursor: pointer;
+}
+
+.LoginDiv input {
+    padding: 5px 10px;
+}
+
+.LoginDiv button:hover, .LoginDiv input:hover {
+    transform: scale(1.025);
+    transition: all 0.15 ease-in-out;
+}
+
 .LoginDiv:hover {
     transform: scale(1.01) rotate(0.05deg);
     transition: all .3s ease-in-out;
