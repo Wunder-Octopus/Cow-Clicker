@@ -6,7 +6,7 @@ const initialState = {
 	currentMultiplier: 1
 }
 
-const cowsReducers = ( state = initialState, action ) => {
+const cowsReducer = ( state = initialState, action ) => {
 
 	switch (action.type) {
 		case types.ADD_COW: {
@@ -25,4 +25,4 @@ const cowsReducers = ( state = initialState, action ) => {
 	}
 };
 
-export default cowsReducers;
+export default cowsReducer;

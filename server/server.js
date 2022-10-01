@@ -1,14 +1,14 @@
 const express = require('express');
 const app = express();
 const path = require('path');
-// const apiRouter = require('./routes/api.js').
+const apiRouter = require('./routes/api.js');
 
 app.use(express.json());
 // app.use(express.urlencoded({ extended: true }));
 
 // app.use('/build', express.static(path.join(__dirname, '../client/build')));  
 
-// app.use('/api', apiRouter);
+app.use('/api', apiRouter);
 
 
 //express error handler, receives (err) and console.logs/sends the error
