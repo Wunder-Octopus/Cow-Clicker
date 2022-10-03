@@ -99,13 +99,33 @@ body {
 }
 
 .loginButton{
-    
+    border: none;
+    background-color: lightskyblue;
+    border-radius: 15px;
+    width: 150px;
+    height: 40px;
 }
 
 .signupToggle {
     display: flex;
     flex-direction: column;
     justify-content: center;
+}
+
+.signupButton {
+    border: none;
+    background-color: lightskyblue;
+    border-radius: 15px;
+    width: 150px;
+    height: 40px;
+}
+
+.returnButton {
+    border: none;
+    background-color: lightskyblue;
+    border-radius: 15px;
+    width: 150px;
+    height: 40px;
 }
 
 #loginHeader { 
