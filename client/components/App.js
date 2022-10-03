@@ -8,6 +8,7 @@ import {loadGameActionCreator} from '../actions/actions.js';
 //login screen
 function App(props) {
 	const [LoggedIn, toggleLoggedIn ] = useState(false);
+	const [attached, setAttach] = useState(false);
 	const [username, setUsername] = useState('');
 	const dispatch = useDispatch();
 
@@ -24,11 +25,38 @@ function App(props) {
 	//in this case we passed in the state variable LoggedIn, which means that anytime the LoggedIn state is changed
 	//this component (App) will rerender
 	useEffect(() => {
-		console.log("Logged In State: ", LoggedIn)
-		console.log("PROPS", username)
+		if (LoggedIn) {
+			let url = `/api/savegame/${username}`
+			fetch(url, {
+				method: 'GET',
+				headers: {
+					'Accept': "application/json, text/plain, */*",
+					'Content-Type': 'application/json',
+				  },
+			})
+				.then((response) => {
+				return response.json();
+			}).then((data)=> {
+				dispatch(loadGameActionCreator(data))
+			})
+		}
 	}, [LoggedIn])
 
 	useEffect(() => console.log("PROPS", username, props.savedState), [props, username])
+	
+
+	// useEffect(() => {
+	// 	return () => {
+	
+	// 	   window.addEventListener("beforeunload", function(e) {
+	// 		saveGameHandler();
+	// 		console.log("SAVED GAME IN REACT COMPONENT")
+	// 		return;
+		
+	// 	});
+	//    }
+	   
+	//   });
 
 	//saves the game to db
 	function saveGameHandler() {
@@ -71,7 +99,6 @@ function App(props) {
 		<>
 		<div className="saveGameContainer">
 			<button onClick={saveGameHandler} id="saveGame">Save</button>
-			<button onClick={loadGameHandler} id="loadGame">Load</button>
 		</div>
 		{LoggedIn ? <Game /> : <LoginPage loginHandler={loginHandler} />}
 		</>
