@@ -9,6 +9,14 @@ export const clickCowActionCreator = () => ({
 	type: types.CLICK,
 });
 
+export const addFieldActionCreator = () => ({
+	type: types.ADD_FIELD,
+});
+
+export const toggleDevMode = () => ({
+	type: types.TOGGLE_DEV,
+})
+
 export const calculateActionCreator = () => ({
 	type: types.CALCULATE,
 });

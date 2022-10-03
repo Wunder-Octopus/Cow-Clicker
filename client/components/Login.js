@@ -24,32 +24,24 @@ export function LoginPage(props) {
         console.log(url)
         //TEMP
         //MOVE THIS INVOKATION AFTER LOGIN CONTROLLER IS CREATED
-        fetch((url, {
+        fetch(url, {
             method: 'POST',
             credentials: 'include',
             headers: {
                 'Accept': "application/json, text/plain",
                 'Content-Type': 'application/json',
                 'x-Trigger': 'CORS'
-
               },
               body: JSON.stringify({username: username, password: password})
         })
             .then((res) => {
-                console.log(res)
-                loginHandler();
-                return res;
-                // if (res.status === 200 || res.status === 201) {
-                //     loginHandler()
-                //     console.log("hi")
-                //     setUsername('')
-                //     setPassword('')
-                // }
-                
-            }))
-            
-
-    }
+                if (res.status === 200 || res.status === 201) {
+                    console.log(res)
+                    loginHandler();
+                    return res;
+                }
+            });
+    };
 
 
 

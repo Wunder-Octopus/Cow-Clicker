@@ -8,6 +8,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  font-family: "Comic Sans MS", "Comic Sans", cursive;
 }
 
 .cowContainerDiv{
@@ -34,6 +35,15 @@
     padding: 5px;
 }
 
+
+.hoverDiv {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
+  transition: all 0.5s ease-in-out;
+}
+
 .shopDiv {
     display: flex;
     flex-direction: column;
@@ -43,15 +53,19 @@
 .shopButton {
     height: 60px;
     width: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     border: 1px solid black;
     cursor: pointer;
     background-color: aliceblue;
-    transition: all 0.1s linear;
+    transition: all 0.1s ease-in-out;
 }
 
 .shopButton:hover {
-  transform: scale(1.05);
-  transition: all 0.1s linear;
+  transform: scale(1.03);
+  transition: all 0.3s ease-in-out;
 }
 
 .shopOptions {
@@ -64,7 +78,7 @@
 .hitbox {
   background-color: rgba(255, 255, 255, 20%);
   position: fixed;
-  left: 170px;
+  left: 380px;
   top: 150px;
   width: 310px;
   height: 355px;
@@ -83,3 +97,4 @@
   transform: scale(1.1);
   transition: all 0.1s linear;
 }
+

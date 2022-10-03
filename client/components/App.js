@@ -10,7 +10,7 @@ function App(props) {
 
 	//this function will be passed down as a prop into <LoginPage />
 	//so when the user clicks on submit/login, the state variable "LoggedIn" will get procced to true here
-	function loginHandler(e) {
+	function loginHandler() {
 		toggleLoggedIn(true);
 	}
 
