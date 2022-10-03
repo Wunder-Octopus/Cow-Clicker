@@ -1,7 +1,7 @@
 const User = require('../models/userModel');
-
 const userController = {};
-
+const SALT_WORK_FACTOR = 6;
+const bcrypt = require('bcrypt');
 
 
 //create user
@@ -12,10 +12,13 @@ userController.createUser = (req, res, next) => {
     // let password = 'hellothere';
 
     // Access username and password
-    const { username, password } = req.body;
+    let { username, password } = req.body;
 
     console.log('req.body:', req.body);
     console.log('username:', username, 'password:', password);
+
+    let salt = bcrypt.genSaltSync(SALT_WORK_FACTOR)
+    password = bcrypt.hashSync(password, salt);
 
     User.create({username: username, password: password}, (err, result) => {
 
@@ -46,22 +49,21 @@ userController.verifyUser = (req, res, next) => {
     // console.log('req.body:', req.body);
     // console.log('username:', username, 'password:', password);
     // Query database (User) by invoking find, checking for username and password
-    User.findOne({username : username, password : password}, (err, result) => {
+    User.findOne({username : username}, (err, user) => {
         // If there is a result, then it's a valid username : password
        // Else no result, then respond with an errorObj: "Invalid username or password"
-       console.log('verifyUser result:', result);
-       if (result) {
-        res.locals.result = { username, password };
-        next();
+       console.log('verifyUser result:', user);
+
+       if (user) {
+        res.locals.result = { username };
+        bcrypt.compare(password, user.password) ? next() : next({message : 'Passwords don\'t match'});
         return;
        } else {
         next ({
             message: "Invalid username or password"
         })
        }
-       
     })
-
 }
 
 
