@@ -23,6 +23,8 @@ userController.createUser = (req, res, next) => {
 
     User.create({username: username, password: password}, (err, result) => {
 
+        res.locals.id = result._id;
+
         // Username already exists
         if(err && err.code === 11000) {
             next({
@@ -56,11 +58,11 @@ userController.verifyUser = (req, res, next) => {
        console.log('verifyUser result:', user);
 
        if (user) {
-        res.locals.result = { username };
-        bcrypt.compareSync(password, user.password) ? next() : next({message : 'Passwords don\'t match'});
-        return;
+        // res.locals.result = { username };
+        res.locals.id = user._id;
+        return bcrypt.compareSync(password, user.password) ? next()  : next({message : 'Passwords don\'t match'});
        } else {
-        next ({
+        return next ({
             message: "Invalid username or password"
         })
        }
@@ -90,7 +92,7 @@ userController.saveGame = (req, res, next) => {
 };
 
 userController.loadGame = (req, res, next) => {
-    const username = req.body.username;
+    const username = req.params.username;
     gameSave.findOne({username: username})
         .then((data) => {
             console.log(data);

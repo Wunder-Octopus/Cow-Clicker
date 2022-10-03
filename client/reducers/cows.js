@@ -23,6 +23,7 @@ const cowsReducers = ( state = initialState, action ) => {
 		// 	}
 		// }
 		case types.LOAD_GAME: {
+			console.log(action.payload);
 			const {
 			milk,
 			totalCows,
@@ -30,7 +31,7 @@ const cowsReducers = ( state = initialState, action ) => {
 			currentMultiplier,
 			cowCost,
 			fieldCost,
-			} = payload.resObj;
+			} = action.payload;
 			console.log('Game Loaded.');
 			return {
 				...state, 

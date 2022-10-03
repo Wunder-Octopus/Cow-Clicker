@@ -14,16 +14,10 @@ export function LoginPage(props) {
     //saves the username
     // (`/api/${event.target.value}`,
     function handleClick(event) {
-        // console.log("USERNAME:", username)
-        // console.log("PASSWORD:", password)\
         let action;
         if (signup) action = 'signup'
         else action = 'login'
-
         let url = '/api/' + action
-        console.log(url)
-        //TEMP
-        //MOVE THIS INVOKATION AFTER LOGIN CONTROLLER IS CREATED
         fetch(url, {
             method: 'POST',
             credentials: 'include',
@@ -37,7 +31,7 @@ export function LoginPage(props) {
             .then((res) => {
                 if (res.status === 200 || res.status === 201) {
                     console.log(res)
-                    loginHandler();
+                    loginHandler(username);
                     return res;
                 }
             });
@@ -49,8 +43,8 @@ export function LoginPage(props) {
 
         return (
             <div className="main">
-                <h1>Cow Clicker EXTREME 3.0 (v4.2)</h1>
-                <h3>A Definitely Complete Video Game Experience</h3>
+                <h1>Cow Clicker EXTREME</h1>
+                <h3>A Cowplete Video Game Experience</h3>
                 <div className="LoginDiv">
                 <h2 id="loginHeader">{signup ? 'Sign Up!' : 'MOOGIN'}</h2>
                 <div className="LoginForm">

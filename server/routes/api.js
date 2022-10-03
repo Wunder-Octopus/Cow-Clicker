@@ -1,5 +1,6 @@
 const express = require('express');
 const userController = require('../controllers/userController');
+const cookieController = require('../controllers/cookieController');
 const router = express.Router();
 
 //const cookieController = require('../controllers/cookieController');
@@ -20,12 +21,12 @@ router.post('/signup', userController.createUser, (req, res, next) => {
 router.post('/login', userController.verifyUser, userController.loadGame, (req, res, next) => {
 	// res.set(body, {username: res.locals.username, message: `Welcome back ${res.locals.username}`});
 	// res.cookie('user', res.locals.username);
-	return res.status(200).send(res.locals.characterData);
+	return res.status(200).json(res.locals.characterData);
 });
 
-router.get('/savegame', userController.loadGame, (req, res, next) => {
+router.get('/savegame/:username', userController.loadGame, (req, res, next) => {
 	console.log('successful load');
-	return res.status(200).send(res.locals.characterData);
+	return res.status(200).json(res.locals.characterData);
 })
 
 router.post('/savegame', userController.saveGame, (req, res, next) => {
