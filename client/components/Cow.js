@@ -7,7 +7,7 @@ import { bindActionCreators } from 'redux';
 function CowContainer(props) {
    const dispatch = useDispatch();
    const store = useStore()
-
+    //
     return (
       <div className="cowContainerDiv" >
           <div onClick={() => {
