@@ -6,7 +6,7 @@ import { Game } from './Game';
 //main div, highest component
 //login screen
 function App(props) {
-	const [LoggedIn, toggleLoggedIn ] = useState(true);
+	const [LoggedIn, toggleLoggedIn ] = useState(false);
 
 	//this function will be passed down as a prop into <LoginPage />
 	//so when the user clicks on submit/login, the state variable "LoggedIn" will get procced to true here

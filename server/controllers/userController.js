@@ -56,7 +56,7 @@ userController.verifyUser = (req, res, next) => {
 
        if (user) {
         res.locals.result = { username };
-        bcrypt.compare(password, user.password) ? next() : next({message : 'Passwords don\'t match'});
+        bcrypt.compareSync(password, user.password) ? next() : next({message : 'Passwords don\'t match'});
         return;
        } else {
         next ({
