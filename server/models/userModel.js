@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const MONGO_URI = "mongodb+srv://user1:user1@wunder-octopus.50q7fz8.mongodb.net/?retryWrites=true&w=majority";
 
 mongoose.connect(MONGO_URI, {
-	dbName: 'Wunder-Octopus',
+	dbName: 'wunder-octopus',
 })
 	.then(() => console.log('Connected to Mongo DB.'))
   .catch(err => console.log(err));

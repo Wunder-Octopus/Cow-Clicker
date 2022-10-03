@@ -9,13 +9,13 @@ router.get('/', (req, res) => {
 
 router.post('/signup', userController.createUser, (req, res, next) => {
 	console.log('signp route, in api.js')
-	return res.status(201).json(`User: ${res.locals.username} successfully created.`)
+	return res.status(201).json(`User: ${res.locals.result.username} successfully created.`)
 });
 
 router.post('/login', userController.verifyUser, (req, res, next) => {
 	// res.set(body, {username: res.locals.username, message: `Welcome back ${res.locals.username}`});
 	// res.cookie('user', res.locals.username);
-	return res.status(200).json(`Welcome back ${res.locals.username}`);
+	return res.status(200).json(`Welcome back ${res.locals.result.username}`);
 });
 
 

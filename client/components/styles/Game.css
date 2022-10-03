@@ -1,0 +1,85 @@
+.gameBody{
+  background-color: rgba(245, 245, 245, 0.037);
+  height: 100%;
+  align-self: center;
+  z-index: 10;
+  border: 1px solid black;
+  width: 99.5%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.cowContainerDiv{
+  border: 1px solid blue;
+  width: 75%;
+  height: 100%;
+}
+
+.shopContainerDiv{
+  border: 1px solid red;
+  background-color: rgba(255, 255, 255, .65);
+  width: 25%;
+  flex-direction: column;
+  display: flex;
+  height: 100%;
+}
+
+.infoDiv {
+    border: 1px solid black;
+    height: 27.5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5px;
+}
+
+.shopDiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.shopButton {
+    height: 60px;
+    width: 250px;
+    border: 1px solid black;
+    cursor: pointer;
+    background-color: aliceblue;
+    transition: all 0.1s linear;
+}
+
+.shopButton:hover {
+  transform: scale(1.05);
+  transition: all 0.1s linear;
+}
+
+.shopOptions {
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    height: 95%;
+}
+
+.hitbox {
+  background-color: rgba(255, 255, 255, 20%);
+  position: fixed;
+  left: 170px;
+  top: 150px;
+  width: 310px;
+  height: 355px;
+  border: 2px solid black;
+  border-radius: 150px;
+  cursor: pointer;
+  transition: all 0.2s linear;
+}
+
+.hitbox:hover {
+  transform: scale(1.025);
+  transition: all 0.1s linear;
+}
+
+.hitbox:active {
+  transform: scale(1.1);
+  transition: all 0.1s linear;
+}
