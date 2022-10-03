@@ -22,6 +22,26 @@ const cowsReducers = ( state = initialState, action ) => {
 		// 		devMode: !dev_Mode
 		// 	}
 		// }
+		case types.LOAD_GAME: {
+			const {
+			milk,
+			totalCows,
+			totalFields,
+			currentMultiplier,
+			cowCost,
+			fieldCost,
+			} = payload.resObj;
+			console.log('Game Loaded.');
+			return {
+				...state, 
+				milk,
+				totalCows,
+				totalFields,
+				currentMultiplier,
+				cowCost,
+				fieldCost
+			};
+		};
 		case types.ADD_COW: {
 			if (state.milk < state.cowCost) return {...state};
 			//purchase new cow
