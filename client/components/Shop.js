@@ -6,17 +6,19 @@ import {calculateActionCreator, toggleDevMode} from '../actions/actions.js';
 
 
 export function ShopContainer(props) {
-    const {milkCount, totalCows, cowCost, fieldCost} = props;
-    const [milk, setMilk] = useState(milkCount)
-    const [cows, setCows] = useState(totalCows)
-    const [cow_Cost, setCowCost] = useState(cowCost)
+    const {milkCount, totalCows, cowCost, fieldCost, totalFields} = props;
+    const [milk, setMilk] = useState(milkCount);
+    const [cows, setCows] = useState(totalCows);
+    const [fields, setFields] = useState(totalFields);
+    const [cow_Cost, setCowCost] = useState(cowCost);
     const dispatch = useDispatch();
     
   useEffect(()=>{
     //
-    if (milkCount !== milk || totalCows !== cows || cowCost !== cow_Cost) {
+    if (milkCount !== milk || totalCows !== cows || cowCost !== cow_Cost|| fields !== totalFields) {
         setMilk(milkCount)
         setCows(totalCows)
+        setFields(totalFields)
         setCowCost(cowCost)
     }
   })
@@ -28,7 +30,7 @@ export function ShopContainer(props) {
             <div className="statsDiv">
                 <p>Milk: <strong>{milk}</strong></p>
                 <p>Cattle: <strong>{cows}</strong></p>
-                <p>Cow Cost:<strong>{cow_Cost}</strong></p>
+                <p>Fields: <strong>{fields}</strong></p>
             </div>
           </div>
           <div className="shopDiv">
@@ -47,7 +49,8 @@ const mapStateToProps = function(state) {
         milkCount: state.cows.milk,
         totalCows: state.cows.totalCows,
         cowCost: state.cows.cowCost,
-        fieldCost: state.cows.fieldCost
+        fieldCost: state.cows.fieldCost,
+        totalFields: state.cows.totalFields
     }
 }
 
