@@ -6,6 +6,8 @@ const apiRouter = require('./routes/api.js');
 app.use(express.json());
 // app.use(express.urlencoded({ extended: true }));
 
+//app.use(cookieParser());
+
 // app.use('/build', express.static(path.join(__dirname, '../client/build')));  
 
 app.use('/api', apiRouter);

@@ -1,7 +1,8 @@
-const User = require('../models/userModel');
+const { User, gameSave } = require('../models/userModel');
 const userController = {};
 const SALT_WORK_FACTOR = 6;
 const bcrypt = require('bcrypt');
+// const gameSave = require('../models/saveDataModel');
 
 
 //create user
@@ -21,6 +22,8 @@ userController.createUser = (req, res, next) => {
     password = bcrypt.hashSync(password, salt);
 
     User.create({username: username, password: password}, (err, result) => {
+
+        res.locals.id = result._id;
 
         // Username already exists
         if(err && err.code === 11000) {
@@ -55,16 +58,51 @@ userController.verifyUser = (req, res, next) => {
        console.log('verifyUser result:', user);
 
        if (user) {
-        res.locals.result = { username };
-        bcrypt.compareSync(password, user.password) ? next() : next({message : 'Passwords don\'t match'});
-        return;
+        // res.locals.result = { username };
+        res.locals.id = user._id;
+        return bcrypt.compareSync(password, user.password) ? next()  : next({message : 'Passwords don\'t match'});
        } else {
-        next ({
+        return next ({
             message: "Invalid username or password"
         })
        }
     })
+
+
 }
 
+userController.saveGame = (req, res, next) => {
+    console.log('inside save game');
+    const { username } = req.body;
+    
+    gameSave.findOneAndUpdate({username: username}, req.body, {
+        new: true,
+        upsert: true 
+      })
+      .then((data) => {
+        console.log(data)
+        res.locals.charData = data;
+        return next();
+    })
+      .catch((e) => {
+        console.log('data', data);
+        console.log('error obj', e);
+        return next(e);
+    }); 
+};
+
+userController.loadGame = (req, res, next) => {
+    const username = req.params.username;
+    gameSave.findOne({username: username})
+        .then((data) => {
+            console.log(data);
+            res.locals.characterData = data;
+            return next();
+        })
+        .catch((e) => {
+            console.log(error);
+            return next(e);
+        });
+};
 
 module.exports = userController;

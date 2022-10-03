@@ -1,16 +1,21 @@
 import React, {useEffect, useState} from 'react';
 import {LoginPage} from './Login'
 import { Game } from './Game';
-
+import { connect, useStore, useDispatch } from 'react-redux';
+import {loadGameActionCreator} from '../actions/actions.js';
 
 //main div, highest component
 //login screen
 function App(props) {
 	const [LoggedIn, toggleLoggedIn ] = useState(false);
+	const [username, setUsername] = useState('');
+	const dispatch = useDispatch();
+
 
 	//this function will be passed down as a prop into <LoginPage />
 	//so when the user clicks on submit/login, the state variable "LoggedIn" will get procced to true here
-	function loginHandler() {
+	function loginHandler(username) {
+		setUsername(username);
 		toggleLoggedIn(true);
 	}
 
@@ -20,14 +25,64 @@ function App(props) {
 	//this component (App) will rerender
 	useEffect(() => {
 		console.log("Logged In State: ", LoggedIn)
+		console.log("PROPS", username)
 	}, [LoggedIn])
+
+	useEffect(() => console.log("PROPS", username, props.savedState), [props, username])
+
+	//saves the game to db
+	function saveGameHandler() {
+		const reqBody = props.savedState;
+		reqBody.username = username;
+
+		fetch('/api/savegame', {
+			method: 'POST',
+            headers: {
+                'Accept': "application/json, text/plain",
+                'Content-Type': 'application/json',
+                'x-Trigger': 'CORS'
+              },
+              body: JSON.stringify(reqBody)
+		})
+		.then((res) => {
+			console.log(res)
+		})
+	}
+
+	//loads game FROM db
+	function loadGameHandler() {
+		let url = `/api/savegame/${username}`
+		fetch(url, {
+			method: 'GET',
+            headers: {
+                'Accept': "application/json, text/plain, */*",
+                'Content-Type': 'application/json',
+              },
+		})
+			.then((response) => {
+			return response.json();
+		}).then((data)=> {
+			dispatch(loadGameActionCreator(data))
+		})
+	}
 
 	//check if state authentication returns true, if yes, render game, otherwise render login page
 	return (
 		<>
+		<div className="saveGameContainer">
+			<button onClick={saveGameHandler} id="saveGame">Save</button>
+			<button onClick={loadGameHandler} id="loadGame">Load</button>
+		</div>
 		{LoggedIn ? <Game /> : <LoginPage loginHandler={loginHandler} />}
 		</>
 	);
 };
 
-export default App;
+
+const mapStateToProps = function(state) {
+    return {
+       savedState: state.cows
+    }
+}
+
+export default connect(mapStateToProps, null) (App);

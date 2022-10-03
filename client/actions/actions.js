@@ -1,6 +1,11 @@
 import * as types from '../constants/actionTypes';
 
 //change puchase to whatever
+export const loadGameActionCreator = (resObj) => ({
+	type: types.LOAD_GAME,
+	payload: resObj,
+});
+
 export const addCowActionCreator = () => ({
 	type: types.ADD_COW,
 });
