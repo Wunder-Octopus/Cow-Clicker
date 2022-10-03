@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
-import {CowContainer} from './Cow';
-import {ShopContainer} from './Shop';
+import CowContainer from './Cow';
+import ShopContainer from './Shop';
 import './styles/Game.css'
 
 //game body component

@@ -37,8 +37,9 @@ const cowsReducers = ( state = initialState, action ) => {
 			};
 		};
 		case types.CLICK: {
+			console.log("INSTATE", state)
 			//handles click on cow to add one milk
-			const currMilk = state.milk++;
+			const currMilk = state.milk += 1
 			return {
 				...state,
 				milk: currMilk,

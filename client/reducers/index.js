@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { cowsReducer } from './cows.js';
+import cowsReducer  from './cows.js';
 
 const reducers = combineReducers({
 	cows: cowsReducer,

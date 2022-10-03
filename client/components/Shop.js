@@ -1,17 +1,19 @@
 import {CowUpgrade} from './CowUpgrade';
 import {FieldUpgrade} from './FieldUpgrade';
 import React, {useEffect, useState} from 'react';
-import { connect } from 'react-redux';
+import { connect, useStore } from 'react-redux';
 
 
 export function ShopContainer(props) {
-  const [milk, setMilk] = useState(props.milk)
+    const {milkCount} = props;
+    const [milk, setMilk] = useState(milkCount)
 
   useEffect(()=>{
-    if (props.milk !== milk) {
-        setMilk(props.milk)
+    //
+    if (milkCount !== milk) {
+        setMilk(milkCount)
     }
-  }, [milk])
+  })
 
   return (
       <div className="shopContainerDiv">
@@ -34,7 +36,7 @@ export function ShopContainer(props) {
 
 const mapStateToProps = function(state) {
     return {
-        milk: state.cows.milk
+        milkCount: state.cows.milk
     }
 }
 
