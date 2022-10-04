@@ -45,19 +45,6 @@ function App(props) {
 	useEffect(() => console.log("PROPS", username, props.savedState), [props, username])
 	
 
-	// useEffect(() => {
-	// 	return () => {
-	
-	// 	   window.addEventListener("beforeunload", function(e) {
-	// 		saveGameHandler();
-	// 		console.log("SAVED GAME IN REACT COMPONENT")
-	// 		return;
-		
-	// 	});
-	//    }
-	   
-	//   });
-
 	//saves the game to db
 	function saveGameHandler() {
 		const reqBody = props.savedState;
@@ -97,10 +84,10 @@ function App(props) {
 	//check if state authentication returns true, if yes, render game, otherwise render login page
 	return (
 		<>
-		<div className="saveGameContainer">
+		{LoggedIn && <div className="saveGameContainer">
 			<button onClick={saveGameHandler} id="saveGame">Save</button>
-		</div>
-		{LoggedIn ? <Game /> : <LoginPage loginHandler={loginHandler} />}
+		</div>}
+		{LoggedIn ? <Game saveGame={saveGameHandler} /> : <LoginPage loginHandler={loginHandler} />}
 		</>
 	);
 };

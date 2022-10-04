@@ -14,6 +14,7 @@ export function Game(props) {
         //runs every 5 seconds
         console.log("DISPATCHER!: ", timer)
         dispatch(calculateActionCreator())
+
         //triggers the new timer
         setTimeout(() => {
             setTimer(timer + 1)
@@ -25,50 +26,5 @@ export function Game(props) {
             <CowContainer />
             <ShopContainer />
         </div>
-    )
-}
-
-// function CowContainer(props) {
-//     return (
-//         <div className="cowContainerDiv" >
-//             <div className="hitbox">
-//                 <img src={null} alt="" />
-//             </div>
-//         </div>
-//     )
-// }
-
-// function ShopContainer(props) {
-//     return (
-//         <div className="shopContainerDiv">
-//             <div className="infoDiv">
-//             </div>
-//             <div className="shopList">
-//                 <div><h2>Shop</h2></div>
-//                 <div className="shopOptions">
-//                     <CowUpgrade />
-//                     <FieldUpgrade />
-//                 </div>
-//             </div>
-//         </div>
-//     )
-// }
-
-// function CowUpgrade(props) {
-//     return (
-//         <div style={{border: '2px dotted black'}} className="shopButton"></div>
-//     )
-// }
-
-// function FieldUpgrade(props) {
-//    return (
-//     <div style={{border: '2px dotted black'}} className="shopButto"></div>
-//    )
-// }
-
-function ShopOptions(props) {
-    return (
-       <>
-       </> 
     )
 }

@@ -50,6 +50,22 @@
     align-items: center;
 }
 
+#saveGame {
+  width: 75px;
+  height: 40px;
+  border: 2px solid black;
+  position: absolute;
+  cursor: pointer;
+  z-index: 50;
+  left: 45px;
+  transition: all 0.1s ease-in-out;
+}
+
+#saveGame:hover {
+  width: 100px;
+  transition: all 0.3s ease-in-out;
+}
+
 .shopButton {
     height: 60px;
     width: 250px;
