@@ -2,8 +2,10 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const bcrypt = require('bcrypt');
 
-const MONGO_URI = "mongodb+srv://user1:user1@wunder-octopus.50q7fz8.mongodb.net/?retryWrites=true&w=majority";
+//change this
+const MONGO_URI = "";
 
+//change this
 mongoose.connect(MONGO_URI, {
 	dbName: 'wunder-octopus',
 })

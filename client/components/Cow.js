@@ -16,6 +16,7 @@ function CowContainer(props) {
           }} className="hitbox" id="hitbox">
               <img src={'https://i.imgur.com/sQusjAS.png'} alt="" />
           </div>
+          {/* you can take this part out....... if you dare.... */}
           <div onClick={() => {
             dispatch(clickCowActionCreator())
             console.log(store.getState())
